@@ -6,6 +6,8 @@ import * as actions from '../../actions';
 import * as apicalls from '../../helpers/apiCall';
 import * as mocks from '../../helpers/mockData';
 
+jest.mock('../../helpers/apiCall');
+
 describe('PokeDeckContainer', () => {
   let wrapper, setTypes, types;
 

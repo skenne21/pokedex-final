@@ -5,7 +5,15 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <PokeDeckContainer
-    setTypes={[MockFunction]}
+    setTypes={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+        ],
+      }
+    }
     types={Array []}
   />,
   Symbol(enzyme.__renderer__): Object {
@@ -120,7 +128,15 @@ ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <PokeDeckContainer
-    setTypes={[MockFunction]}
+    setTypes={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+        ],
+      }
+    }
     types={
       Array [
         Object {
