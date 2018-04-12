@@ -4,13 +4,20 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import * as apiCalls from '../../helpers/apiCall.js';
 import Card from '../../components/Card';
+import Lists from '../../components/Lists';
 
 export class PokeDeckContainer extends Component {
 
   getPokemonType = async () => {
-    const pokemon = await apiCalls.getPokemon();
+    const pokemon = await apiCalls.getTypes();
     this.props.setTypes(pokemon);
   }
+
+  getPokemonInfo = async (pokemonIds) => {
+    const pokemon = await apiCalls.getPokemon(pokemonIds);
+    this.props.addPokemons(pokemon);
+  }
+
 
 
   createCards = () => {
@@ -18,7 +25,8 @@ export class PokeDeckContainer extends Component {
       return (
         <Card 
           key={type.iod} 
-          type={type} 
+          type={type}
+          getPokemonInfo={this.getPokemonInfo}
         />
       )
     });
@@ -39,21 +47,25 @@ export class PokeDeckContainer extends Component {
         {
           types.length ? this.createCards() : <img src="../../../public/pikachu.gif"/>
         }
+        <Lists pokemons={this.props.pokemons}/>
+
       </div>
     );
   }
 }
 
 PokeDeckContainer.propTypes = {
-  types: shape([ name: string ]),
+  types: shape({ types: string }),
   setTypes: func.isRequired
 };
 
-export const mapStateToProps = ({ types }) => ({
- types
+export const mapStateToProps = ({ types, pokemons }) => ({
+  types,
+  pokemons
 });
 
 export const mapDispatchToProps = dispatch => ({ 
-  setTypes: (pokemon) => dispatch(actions.setTypes(pokemon))
+  setTypes: (types) => dispatch(actions.setTypes(types)),
+  addPokemons: pokemons => dispatch(actions.addPokemon(pokemons))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(PokeDeckContainer);

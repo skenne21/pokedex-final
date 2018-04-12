@@ -1,10 +1,11 @@
 import React from 'react';
 
-const Card = ({type}) => {
+const Card = ({ type, getPokemonInfo}) => {
   const { name, pokemon } = type
   return (
     <div>
-      <button>{name}</button>
+      <h1>{name}</h1>
+      <button onClick={ () => getPokemonInfo(pokemon)}></button>
     </div>
   )
 
