@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes, { shape, func, string } from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import * as apiCalls from '../../helpers/apiCall.js';
@@ -10,17 +10,25 @@ import './styles.css';
 export class PokeDeckContainer extends Component {
 
   getPokemonType = async () => {
-    const pokemon = await apiCalls.getTypes();
-    this.props.setTypes(pokemon);
+    try {
+      const pokemon = await apiCalls.getTypes();
+      this.props.setTypes(pokemon);
+    } catch (error) {
+      throw error
+    }
+    
   }
 
   getPokemonInfo = async (pokemonIds) => {
-    const pokemon = await apiCalls.getPokemon(pokemonIds);
+    try  {
+      const pokemon = await apiCalls.getPokemon(pokemonIds);
     
-    this.props.addPokemons(pokemon);
+      this.props.addPokemons(pokemon);
+    } catch (error) {
+      throw error
+    }
+    
   }
-
-
 
   createCards = () => {
     return this.props.types.map((type) => {
@@ -53,8 +61,11 @@ export class PokeDeckContainer extends Component {
 }
 
 PokeDeckContainer.propTypes = {
-  types: shape({ types: string }),
-  setTypes: func.isRequired
+  types: PropTypes.array,
+  setTypes: PropTypes.func,
+  pokemons: PropTypes.array,
+  addPokemons: PropTypes.func
+
 };
 
 export const mapStateToProps = ({ types, pokemons }) => ({

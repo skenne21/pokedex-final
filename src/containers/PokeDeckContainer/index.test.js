@@ -36,8 +36,17 @@ describe('PokeDeckContainer', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should call getPokemonType method', () => {
-    
+  it.skip('should call getPokemonType method on component did mount', () => {
+    const spy = jest.spyOn(wrapper.instance(), 'getPokemonTypes');
+    wrapper.instance.componentDidMount();
+    expect(spy).toHaveBeenCalled();
+  })
+
+  it.skip('should call getPokemonInfo with the right params', () => {
+    const ids = ['1'];
+    const expected = ['1'];
+    const called = wrapper.instance.getPokemonInfo(ids);
+    expect(called).toHaveBeenCalledWith(expected);
   })
 
   describe('mapStateToProps', () => {
