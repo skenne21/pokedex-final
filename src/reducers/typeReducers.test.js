@@ -9,11 +9,10 @@ describe('typeReducer', () => {
     expect(called).toEqual(expected);
   });
 
-  it('Should return a new state with pokemon types inside it if action type is SET_TYPE', () => {
-    const expected = mocks.types;
+  it('Should return a new state with pokemon types in it', () => {
     const types = mocks.types;
-    const called = typeReducer(actions.setTypes(types));
-
-    expect(called).toEqual(expected)
-  });
+    const expected = mocks.types;
+    const called = typeReducer(undefined, actions.setTypes(types));
+    expect(called).toEqual(types);
+  })
 })
