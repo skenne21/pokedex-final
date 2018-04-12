@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './styles.css';
 
 const Card = ({ type, getPokemonInfo}) => {
+
   const { name, pokemon } = type
   return (
     <div className='Card'>
