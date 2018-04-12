@@ -44,4 +44,23 @@ describe('Apicalls', () => {
       expect(called).rejects.toEqual(expected);
     });
   });
+
+  describe('getPokemon', () => {
+    let url, pokemons;
+    beforeEach(() => {
+      url = 'http://localhost:3001/pokemon/1';
+      pokemons = mocks.pokemons
+      window.fetch = jest.fn().mockImplementation(() => (
+        Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(pokemons)
+        })
+      ));
+    });
+
+    it('Should fetch with the right url', () => {
+      apiCalls.getPokemon(1)
+      expect(window.fetch).toHaveBeenCalledWith(url)
+    })
+  })
 })
