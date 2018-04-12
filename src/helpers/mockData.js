@@ -28,3 +28,12 @@ export const pokemons = [
     image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/57.png"
   }
 ]
+
+export const pokemon = {
+  name: "ivysaur",
+  id: "1",
+  weight: 130,
+  sprites: {
+    back_default:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/2.png"
+  }
+}
