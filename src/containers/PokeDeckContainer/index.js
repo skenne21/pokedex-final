@@ -8,9 +8,11 @@ class PokeDeckContainer extends Component {
 
   getPokemonType = async () => {
     const pokemon = await apiCalls.getPokemon();
+    this.props.setPokemon(pokemon)
+
 
   }
-  
+
   componentDidMount() {
    this.getPokemonType()
   }
@@ -37,6 +39,6 @@ const mapStateToProps = ({ pokemon }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({ 
-  getPokemon: (pokemon) => dispatch(actions.getPokemon(pokemon))
+  setPokemon: (pokemon) => dispatch(actions.setPokemon(pokemon))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(PokeDeckContainer);
