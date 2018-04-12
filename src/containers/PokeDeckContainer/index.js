@@ -45,7 +45,7 @@ export class PokeDeckContainer extends Component {
 }
 
 PokeDeckContainer.propTypes = {
-  types: shape({ types: string }),
+  types: shape([ name: string ]),
   setTypes: func.isRequired
 };
 
