@@ -2,7 +2,7 @@ import * as apiCalls from './apiCall';
 import * as mocks from './mockData';
 
 describe('Apicalls', () => {
-  describe('getPokemon', () => { 
+  describe('getTypes', () => { 
     let url, types;
 
     beforeEach(() => {
@@ -17,13 +17,13 @@ describe('Apicalls', () => {
     });
 
     it('Should fetch with the right params', () => {
-      apiCalls.getPokemon()
+      apiCalls.getTypes()
       expect(window.fetch).toHaveBeenCalledWith(url)
     });
 
     it.skip('Should return a clean array with types inside it', async () => {
       const expected = mocks.types;
-      const called = await apiCalls.getPokemon();
+      const called = await apiCalls.getTypes();
       expect(called).toEqaul(expected)
     });
 
@@ -40,7 +40,7 @@ describe('Apicalls', () => {
         message: 'error happened'
       };
 
-      const called = apiCalls.getPokemon();
+      const called = apiCalls.getTypes();
       expect(called).rejects.toEqual(expected);
     });
   });

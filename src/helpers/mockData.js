@@ -16,3 +16,15 @@ export const types = [
     ]
   }
 ]
+
+export const pokemons = [
+  {
+    name: "mankey",
+    weight: 280
+    image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/56.png"
+  }, {
+    name: "primeape"
+    weight: 280
+    image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/57.png"
+  }
+]
