@@ -10,8 +10,7 @@ export const getTypes =  async () => {
 
 export const getPokemon = async (ids) => {
   const pokemonPromises = ids.map(async pokemon => {
-    const response = await fetch(`http://localhost:3001/pokemon/${pokemon}`);
-    const apiData = await response.json();
+    const apiData = await fetchPokemon(pokemon)
     const indivdualPokemon = {
       name: apiData.name,
       weight: apiData.weight,
@@ -20,6 +19,16 @@ export const getPokemon = async (ids) => {
     return indivdualPokemon;
   })  
   return Promise.all(pokemonPromises)
+}
+
+export const fetchPokemon = async (pokemon) => {
+  try {
+    const response = await fetch(`http://localhost:3001/pokemon/${pokemon}`);
+    const apiData = await response.json();
+    return apiData;
+  } catch (error) {
+    throw error
+  }  
 }
 
 

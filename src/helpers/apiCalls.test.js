@@ -45,7 +45,16 @@ describe('Apicalls', () => {
     });
   });
 
-  describe('getPokemon', () => {
+  describe('getPokemons', () => {
+    it.skip("Should return an array of clean pokemons", async () => {
+      const ids = ['1']
+      const expected = mocks.pokemons;
+      const called = await apiCalls.getPokemon(ids);
+      expect(called).toEqual(expected);
+    })
+  })
+
+  describe('fetchPokemon', () => {
     let url, pokemons;
     beforeEach(() => {
       url = 'http://localhost:3001/pokemon/1';
@@ -59,8 +68,31 @@ describe('Apicalls', () => {
     });
 
     it('Should fetch with the right url', () => {
-      apiCalls.getPokemon(1)
+      apiCalls.fetchPokemon(1)
       expect(window.fetch).toHaveBeenCalledWith(url)
+    });
+
+     it.skip('Should return a pokemon', async () => {
+      const expected = mocks.pokemon;
+      const called = await apiCalls.fetchPokemon(1);
+      expect(called).toEqaul(expected)
+    });
+
+     it('Should throw an error if the status is above 200', () => {
+      window.fetch = jest.fn().mockImplementation(() => (
+        Promise.reject({
+          status: 500,
+          message: 'error happened'
+        })
+      ));
+
+      const expected = {
+        status: 500,
+        message: 'error happened'
+      };
+
+      const called = apiCalls.fetchPokemon();
+      expect(called).rejects.toEqual(expected);
     })
   })
 })
