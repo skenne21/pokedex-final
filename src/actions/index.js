@@ -1,1 +1,4 @@
-export const fakeAction = () => ({ type: 'FAKE'})
+export const getPokemon = (pokemon) => ({
+ type: 'GET_POKEMON',
+ pokemon
+})
