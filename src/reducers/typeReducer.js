@@ -1,4 +1,4 @@
-const pokemonReducer = (state= [], action) => {
+const typeReducer = (state= [], action) => {
   switch (action.type) {
   case 'SET_POKEMON':
     return [...state, ...action.pokemon]
@@ -7,4 +7,4 @@ const pokemonReducer = (state= [], action) => {
   }
 };
 
-export default pokemonReducer
+export default typeReducer
