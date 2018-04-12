@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import PokeDeckContainer from '../../containers/PokeDeckContainer/'
+import PokeDeckContainer from '../../containers/PokeDeckContainer/';
+
 
 class App extends Component {
-
 
   render() {
     return (
