@@ -36,11 +36,33 @@ describe('PokeDeckContainer', () => {
 
   describe('mapStateToProps', () => {
     let expectedState, mappedState;
-    
+
     beforeEach(() => {
       expectedState = { types:mocks.types };
       mappedState = { types:mocks.types };
     });
-    
+
+    it('Should map types to state', () => {
+      const types = mocks.types
+      const called = mapStateToProps(mappedState)
+      expect(called).toEqual(expectedState)
+    });
+  });
+
+  describe('mapDispatchToProps', () => {
+    let mockedDispatch, mapped;
+
+    beforeEach(() => {
+      mockedDispatch = jest.fn(); 
+      mapped = mapDispatchToProps(mockedDispatch);
+    });
+
+    it('Should call dispatch with the right params', () => {
+      const types = mocks.types;
+      const called = mapped.setTypes(types);
+      const expected = actions.setTypes(types);
+
+      expect(mockedDispatch).toHaveBeenCalledWith(expected);
+    })
   });
 });
