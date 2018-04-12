@@ -8,6 +8,8 @@ export const getPokemon =  async () => {
   }
 }
 
+
+
 // export const cleanPokemon = (allPokemon) => {
 //   const pokemonPromises = allPokemon.map( async type => {
 //     const pokemonType = await cleanType(type);

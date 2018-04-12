@@ -12,6 +12,9 @@ export class PokeDeckContainer extends Component {
     this.props.setTypes(pokemon);
   }
 
+  getType = (pokemon) => {
+    console.log(pokemon)
+  }
 
   createCards = () => {
     return this.props.types.map((type) => {
@@ -19,6 +22,7 @@ export class PokeDeckContainer extends Component {
         <Card 
           key={type.iod} 
           type={type} 
+          getType={this.getType}
         />
       )
     });
@@ -45,7 +49,7 @@ export class PokeDeckContainer extends Component {
 }
 
 PokeDeckContainer.propTypes = {
-  types: shape([ name: string ]),
+  types: shape({ types: string }),
   setTypes: func.isRequired
 };
 
