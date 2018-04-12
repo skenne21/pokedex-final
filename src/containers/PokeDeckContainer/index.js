@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import * as apiCalls from '../../helpers/apiCall.js';
 import Card from '../../components/Card';
+import Lists from '../../components/Lists';
 
 export class PokeDeckContainer extends Component {
 
@@ -17,13 +18,14 @@ export class PokeDeckContainer extends Component {
     this.props.addPokemons(pokemon);
   }
 
+
+
   createCards = () => {
     return this.props.types.map((type) => {
       return (
         <Card 
           key={type.iod} 
           type={type}
-          pokemons={this.props.pokemons} 
           getPokemonInfo={this.getPokemonInfo}
         />
       )
@@ -45,6 +47,8 @@ export class PokeDeckContainer extends Component {
         {
           types.length ? this.createCards() : <img src="../../../public/pikachu.gif"/>
         }
+        <Lists pokemons={this.props.pokemons}/>
+
       </div>
     );
   }

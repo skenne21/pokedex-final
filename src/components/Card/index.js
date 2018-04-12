@@ -1,7 +1,6 @@
 import React from 'react';
 
-const Card = ({ type, getPokemonInfo, pokemons }) => {
-  console.log(pokemons)
+const Card = ({ type, getPokemonInfo}) => {
   const { name, pokemon } = type
   return (
     <div>
