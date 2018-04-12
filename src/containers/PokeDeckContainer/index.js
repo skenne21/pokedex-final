@@ -5,7 +5,7 @@ import * as actions from '../../actions';
 import * as apiCalls from '../../helpers/apiCall.js';
 import Card from '../../components/Card';
 
-class PokeDeckContainer extends Component {
+export class PokeDeckContainer extends Component {
 
   getPokemonType = async () => {
     const pokemon = await apiCalls.getPokemon();
@@ -45,15 +45,15 @@ class PokeDeckContainer extends Component {
 }
 
 PokeDeckContainer.propTypes = {
-  pokemon: shape({ pokemon: string }),
+  types: shape({ types: string }),
   setTypes: func.isRequired
 };
 
-const mapStateToProps = ({ types }) => ({
+export const mapStateToProps = ({ types }) => ({
  types
 });
 
-const mapDispatchToProps = dispatch => ({ 
+export const mapDispatchToProps = dispatch => ({ 
   setTypes: (pokemon) => dispatch(actions.setTypes(pokemon))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(PokeDeckContainer);
