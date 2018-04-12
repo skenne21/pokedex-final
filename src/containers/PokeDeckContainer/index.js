@@ -5,6 +5,7 @@ import * as actions from '../../actions';
 import * as apiCalls from '../../helpers/apiCall.js';
 import Card from '../../components/Card';
 import Lists from '../../components/Lists';
+import './styles.css';
 
 export class PokeDeckContainer extends Component {
 
@@ -39,7 +40,7 @@ export class PokeDeckContainer extends Component {
   render() {
     const { types } = this.props;
     return (
-      <div>
+      <div className="PokeDeckContainer">
         {
           types.length ? this.createCards() : <img src="../../../public/pikachu.gif"/>
         }
