@@ -16,7 +16,13 @@ describe('actions', () => {
   });
 
   describe('addPokemon action', () => {
-    const 
+    const pokemon = mocks.pokemons;
+    const expected = {
+      type: "ADD_POKEMON",
+      pokemon
+    }
+    const called = actions.addPokemon(pokemon);
+    expect(called).toEqual(expected);
   })
 
   
