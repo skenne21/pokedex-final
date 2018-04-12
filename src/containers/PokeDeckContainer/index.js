@@ -3,6 +3,7 @@ import PropTypes, { shape, func, string } from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
 import * as apiCalls from '../../helpers/apiCall.js';
+import Card from '../../components/Card';
 
 class PokeDeckContainer extends Component {
 
@@ -12,12 +13,23 @@ class PokeDeckContainer extends Component {
   }
 
 
+  createCards = () => {
+    return this.props.types.map((type) => {
+      return (
+        <Card 
+          key={type.iod} 
+          type={type} 
+        />
+      )
+    });
+  }
 
   componentDidMount() {
    this.getPokemonType()
   }
 
   render() {
+    const { types } = this.props;
     return (
       <div>
         <button onClick={()=> {
@@ -25,7 +37,7 @@ class PokeDeckContainer extends Component {
           alert('FAKE')
         }}> FAKE </button>
         {
-          this.props.types < 1 ? <img src="../../../pikachu.gif" /> : ''
+          types.length ? this.createCards() : <img src="../../../public/pikachu.gif"/>
         }
       </div>
     );
