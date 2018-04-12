@@ -16,6 +16,7 @@ export class PokeDeckContainer extends Component {
 
   getPokemonInfo = async (pokemonIds) => {
     const pokemon = await apiCalls.getPokemon(pokemonIds);
+    
     this.props.addPokemons(pokemon);
   }
 
