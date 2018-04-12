@@ -8,10 +8,10 @@ class PokeDeckContainer extends Component {
 
   getPokemonType = async () => {
     const pokemon = await apiCalls.getPokemon();
-    this.props.setPokemon(pokemon)
-
-
+    this.props.setTypes(pokemon);
   }
+
+
 
   componentDidMount() {
    this.getPokemonType()
@@ -24,6 +24,9 @@ class PokeDeckContainer extends Component {
           this.props.getPokemon()
           alert('FAKE')
         }}> FAKE </button>
+        {
+          this.props.types < 1 ? <img src="../../../pikachu.gif" /> : ''
+        }
       </div>
     );
   }
@@ -31,14 +34,14 @@ class PokeDeckContainer extends Component {
 
 PokeDeckContainer.propTypes = {
   pokemon: shape({ pokemon: string }),
-  getPokemonAction: func.isRequired
+  setTypes: func.isRequired
 };
 
-const mapStateToProps = ({ pokemon }) => ({
- pokemon 
+const mapStateToProps = ({ types }) => ({
+ types
 });
 
 const mapDispatchToProps = dispatch => ({ 
-  setPokemon: (pokemon) => dispatch(actions.setPokemon(pokemon))
+  setTypes: (pokemon) => dispatch(actions.setTypes(pokemon))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(PokeDeckContainer);

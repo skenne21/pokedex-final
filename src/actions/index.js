@@ -1,4 +1,4 @@
-export const setPokemon = (pokemon) => ({
- type: 'SET_POKEMON',
+export const setTypes = (pokemon) => ({
+ type: 'SET_TYPES',
  pokemon
 })
