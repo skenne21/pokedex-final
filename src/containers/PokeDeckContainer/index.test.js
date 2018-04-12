@@ -36,7 +36,9 @@ describe('PokeDeckContainer', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  
+  it('should call getPokemonType method', () => {
+    
+  })
 
   describe('mapStateToProps', () => {
     let expectedState, mappedState;
