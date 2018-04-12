@@ -8,12 +8,13 @@ import Card from '../../components/Card';
 export class PokeDeckContainer extends Component {
 
   getPokemonType = async () => {
-    const pokemon = await apiCalls.getPokemon();
+    const pokemon = await apiCalls.getTypes();
     this.props.setTypes(pokemon);
   }
 
-  getType = (pokemon) => {
-    console.log(pokemon)
+  getPokemonInfo = async (pokemonIds) => {
+    const pokemon = await apiCalls.getPokemon(pokemonIds);
+    this.props.addPokemons(pokemon);
   }
 
   createCards = () => {
@@ -21,8 +22,9 @@ export class PokeDeckContainer extends Component {
       return (
         <Card 
           key={type.iod} 
-          type={type} 
-          getType={this.getType}
+          type={type}
+          pokemons={this.props.pokemons} 
+          getPokemonInfo={this.getPokemonInfo}
         />
       )
     });
@@ -53,11 +55,13 @@ PokeDeckContainer.propTypes = {
   setTypes: func.isRequired
 };
 
-export const mapStateToProps = ({ types }) => ({
- types
+export const mapStateToProps = ({ types, pokemons }) => ({
+  types,
+  pokemons
 });
 
 export const mapDispatchToProps = dispatch => ({ 
-  setTypes: (pokemon) => dispatch(actions.setTypes(pokemon))
+  setTypes: (types) => dispatch(actions.setTypes(types)),
+  addPokemons: pokemons => dispatch(actions.addPokemon(pokemons))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(PokeDeckContainer);
