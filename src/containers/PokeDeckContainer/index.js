@@ -29,6 +29,7 @@ class PokeDeckContainer extends Component {
   }
 
   render() {
+    const { types } = this.props;
     return (
       <div>
         <button onClick={()=> {
@@ -36,7 +37,7 @@ class PokeDeckContainer extends Component {
           alert('FAKE')
         }}> FAKE </button>
         {
-          this.createCards()
+          types.length ? this.createCards() : <img src="../../../public/pikachu.gif"/>
         }
       </div>
     );

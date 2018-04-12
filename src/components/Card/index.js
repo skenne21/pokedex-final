@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Card = ({type}) => {
-  console.log(type)
+  const { name, pokemon } = type
   return (
     <div>
-      hello
+      <button>{name}</button>
     </div>
   )
 
