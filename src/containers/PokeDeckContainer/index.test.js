@@ -36,16 +36,34 @@ describe('PokeDeckContainer', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  
+
   describe('mapStateToProps', () => {
     let expectedState, mappedState;
 
     beforeEach(() => {
-      expectedState = { types:mocks.types };
-      mappedState = { types:mocks.types };
+      expectedState = {
+       types:[],
+       pokemons: []
+      };
+      mappedState = { 
+        types: [],
+        pokemons: []
+      };
     });
 
     it('Should map types to state', () => {
       const types = mocks.types
+      expectedState.types = types;
+      mappedState.types = types;
+      const called = mapStateToProps(mappedState)
+      expect(called).toEqual(expectedState)
+    });
+
+    it('Should map pokemons to state', () => {
+      const pokemons = mocks.pokemons
+      expectedState.pokemons = pokemons;
+      mappedState.pokemons = pokemons;
       const called = mapStateToProps(mappedState)
       expect(called).toEqual(expectedState)
     });
@@ -63,6 +81,14 @@ describe('PokeDeckContainer', () => {
       const types = mocks.types;
       const called = mapped.setTypes(types);
       const expected = actions.setTypes(types);
+
+      expect(mockedDispatch).toHaveBeenCalledWith(expected);
+    });
+
+    it('Should call dispatch with the right params', () => {
+      const pokemons = mocks.pokemons;
+      const called = mapped.addPokemons(pokemons);
+      const expected = actions.addPokemon(pokemons);
 
       expect(mockedDispatch).toHaveBeenCalledWith(expected);
     })
