@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './styles.css';
 
 const Card = ({ type, getPokemonInfo}) => {
@@ -10,6 +11,11 @@ const Card = ({ type, getPokemonInfo}) => {
     </div>
   )
 
+}
+
+Card.propTypes = {
+  type: PropTypes.array,
+  getPokemonInfo: PropTypes.func
 }
 
 export default Card
